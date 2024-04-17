@@ -1,0 +1,3240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X</title>
+    <link rel="shotcut icon" type="x-icon" href="logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        *:focus {
+            outline: none;
+        }
+
+
+        body,
+        html {
+            font-family: "Chirp", sans-serif;
+            background-color: black;
+
+
+        }
+
+        a {
+
+            text-decoration: none;
+        }
+
+        .main {
+            /* border: 1px solid blue; */
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            position: absolute;
+            top: 0;
+        }
+
+        .left {
+            width: 25%;
+            height: 100vh;
+            /* border: 1px solid yellow; */
+            display: flex;
+            flex-direction: column;
+            align-items: left;
+            padding: 10px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            /* border-right: 1px solid grey; */
+
+
+
+
+
+
+        }
+
+        /* .left {
+
+        } */
+
+        .right {
+            width: 25%;
+            height: 100vh;
+            border: 1px solid grey;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: -1;
+            /* bottom: 0; */
+            /* overflow-y: auto; */
+
+        }
+
+        .logo a img {
+            /* mix-blend-mode: multiply; */
+            width: 100%;
+        }
+
+        .logo {
+            width: 40px;
+            margin: 10px 25px;
+        }
+
+        .navlist li {
+            margin: 5px 20px;
+            width: 100%;
+
+
+
+        }
+
+        .navlist {
+            display: flex;
+            flex-direction: column;
+            justify-content: left;
+            background-color: #000000;
+
+
+        }
+
+        .rot {
+            display: flex;
+            /* flex-direction: column; */
+            justify-content: space-evenly;
+            align-items: center;
+            background-color: #000000;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            left: 0;
+            display: none;
+
+
+            z-index: 99999;
+
+        }
+
+        /* .rot .re{
+            display: none;
+        } */
+
+        .rot #not {
+            width: 10px;
+        }
+
+        .rot li {
+            /* width: 25px; */
+            font-size: 24px;
+
+            list-style: none;
+        }
+
+        .rot li a {
+            color: white;
+            /* width: 100%; */
+            display: flex;
+            margin: 0 14px;
+
+        }
+
+        .rot #mess {
+            width: 0;
+            margin-right: 30px;
+        }
+
+        .rot li #exp {
+            width: 0;
+            margin-right: 30px;
+
+        }
+
+        .navlist li {
+            list-style: none;
+        }
+
+        .navlist li a {
+            display: flex;
+            color: white;
+            column-gap: 10px;
+            font-size: 20px;
+            width: 114px;
+            padding: 7px 15px;
+            border-radius: 30px;
+
+
+        }
+
+        .navlist li a:hover {
+            background-color: rgba(255, 255, 255, 0.26);
+        }
+
+        .navlist li a i {
+            font-size: 22px;
+        }
+
+        #exp {
+            width: 122px;
+        }
+
+        #not {
+            width: 160px;
+        }
+
+        #mess {
+            width: 135px;
+        }
+
+        .post {
+            background-color: rgb(2, 162, 224);
+            padding: 20px;
+            margin: 10px 15px;
+            border-radius: 30px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+        }
+
+        .post:hover {
+            background-color: rgb(4, 149, 206);
+        }
+
+        .post1:hover {
+            background-color: rgba(255, 255, 255, 0.219);
+        }
+
+        .post1 {
+
+            padding: 4px;
+            margin: 2px 15px;
+            flex-wrap: wrap;
+            border-radius: 30px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            user-select: text;
+
+
+        }
+
+        .hu {
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+        }
+
+        .post1 h4 {
+            font-size: 14px;
+
+        }
+
+        .post1 p {
+            color: rgb(167, 163, 163);
+        }
+
+        .post1 img {
+            width: 50px;
+            border-radius: 50%;
+            margin: 0 3px;
+        }
+
+        .center {
+            width: 50%;
+            height: auto;
+            /* border: 2px solid rgb(255, 0, 0); */
+            /* padding: 10px; */
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            left: 25%;
+            border-bottom: 1px solid gray;
+            border-left: 1px solid gray;
+            border-right: 1px solid gray;
+        }
+
+        .nav {
+            display: flex;
+            color: white;
+            justify-content: space-between;
+            height: 50px;
+            align-items: center;
+            border-bottom: 1px solid gray;
+            border-left: 1px solid gray;
+            border-right: 1px solid gray;
+            position: sticky;
+            top: 0px;
+            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.514);
+            /* background-color: #1c95e580; */
+            z-index: 40;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+        }
+
+        .sett {
+            width: auto;
+            display: flex;
+            justify-content: center;
+            padding: 8px;
+            /* border: 1px solid; */
+            border-radius: 50%;
+            font-size: 20px;
+
+
+        }
+
+        .sett a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .sett:hover {
+            background-color: rgba(255, 255, 255, 0.24);
+        }
+
+        .fo1,
+        .fo2 {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .fo1:hover,
+        .fo2:hover {
+            background-color: rgba(255, 255, 255, 0.096);
+        }
+
+
+        .fo1 a h3 {
+            border-bottom: 4px solid rgb(2, 162, 224);
+
+            padding-bottom: 10px;
+        }
+
+        .fo2 a h3 {
+            /* border-bottom: 4px solid rgb(2, 162, 224); ; */
+            padding-bottom: 10px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .phot {
+            width: 60px;
+        }
+
+        .text .phot a img {
+            border-radius: 50%;
+            width: 100%;
+        }
+
+        .text {
+            border-left: 1px solid grey;
+            border-right: 1px solid grey;
+            border-bottom: 1px solid grey;
+            padding: 15px;
+        }
+
+        .ph {
+            display: flex;
+            align-items: center;
+        }
+
+        .ph .input {
+            height: 40%;
+            padding: 5px;
+            background-color: black;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 21px;
+            width: 100%;
+            resize: none;
+            display: flex;
+            font-family: "Chirp", sans-serif;
+            margin: 0 10px;
+            /* word-wrap: break-word; */
+
+        }
+
+        .ph.input::-webkit-input-placeholder {
+            color: rgb(170, 168, 168);
+        }
+
+        .ever i {
+            color: #1C94E5;
+            font-size: 20px;
+        }
+
+        .ever p {
+            color: #1C94E5;
+        }
+
+        .ever a {
+            display: flex;
+            width: 175px;
+            border-radius: 18px;
+            padding: 8px;
+            /* border: 1px solid; */
+        }
+
+        .ever a:hover {
+            background-color: rgba(255, 255, 255, 0.082);
+        }
+
+        .dab {
+            width: 100%;
+            /* border: 1px solid red; */
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #po {
+            padding: 5px 20px;
+        }
+
+
+
+        /* .ever i:hover{
+            background-color: rgba(255, 255, 255, 0.151);
+        }
+        .ever p:hover{
+            background-color: rgba(255, 255, 255, 0.151);
+        } */
+        .navse {
+            height: 50px;
+            background-color: black;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            /* border: 1px solid blue; */
+            padding: 4px;
+            position: sticky;
+            top: 0;
+        }
+
+        .nat {
+            display: flex;
+            border: 3px solid transparent;
+            width: 80%;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff2a;
+            border-radius: 20px;
+            padding: 5px;
+
+
+        }
+
+        .nat i {
+            color: rgb(173, 173, 173);
+            font-size: 20px;
+
+            margin: 0 3px;
+        }
+
+        .nat input {
+            margin: 0 3px;
+            height: auto;
+            border-radius: 20px;
+            padding: 5px;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 21px;
+            width: 100%;
+            resize: none;
+            display: flex;
+            font-family: "Chirp", sans-serif;
+
+
+        }
+
+        /* .nat input::-webkit-input-placeholder {
+            color: rgb(170, 168, 168);
+        } */
+        .user img {
+            border-radius: 50%;
+            width: 60px;
+            margin: 0 4px;
+
+        }
+
+        .user a {
+            border: 1px solid green;
+            display: flex;
+            align-items: center;
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+
+        }
+
+        .user a h4:hover {
+            text-decoration: underline;
+        }
+
+        .user p {
+            color: white;
+
+        }
+
+        #blue {
+            width: 30px;
+            /* border: 1px solid red; */
+            padding: 0;
+            margin: 0 4px;
+        }
+
+        #wt a {
+            display: flex;
+            align-items: flex-start;
+            /* border: 1px solid red; */
+
+
+        }
+
+        #wt {
+            justify-content: left;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+
+        }
+
+        #wt p {
+            margin-left: 55px;
+        }
+
+        #wt:hover {
+            background-color: transparent;
+        }
+
+        #wt h4 {
+            color: white;
+            font-size: 18px;
+            margin: 4px 2px;
+            display: flex;
+            align-items: flex-start;
+            height: auto;
+            padding: 0;
+        }
+
+        #wt h4:hover {
+            text-decoration: underline;
+        }
+
+        .cont {
+            /* border: 1px solid blue; */
+            height: auto;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            flex-direction: column;
+            align-items: center;
+            z-index: 3;
+            outline: none;
+            background-color: transparent;
+
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+
+
+
+        }
+
+
+
+        .vic {
+            cursor: pointer;
+
+            width: 100%;
+            margin: 10px;
+            border-radius: 20px;
+        }
+
+        .vic video {
+            cursor: pointer;
+            width: 100%;
+            border-radius: 20px;
+            border: 1px solid grey;
+            position: relative;
+            z-index: 1;
+        }
+
+        .twi {
+            border-left: 1px solid grey;
+            border-right: 1px solid grey;
+            border-bottom: 1px solid grey;
+            padding-top: 10px;
+
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+
+
+        @media screen and (max-width:1024px) {
+            .gay {
+                display: none;
+            }
+
+            .left {
+                width: 15%;
+                /* z-index: -1; */
+            }
+
+            .center {
+                width: 60%;
+                left: 15%;
+
+            }
+
+        }
+
+        @media screen and (max-width:763px) {
+            .gay {
+                display: none;
+            }
+
+            .left {
+                width: 0;
+                /* z-index: -1; */
+            }
+
+            #gro,
+            #lis,
+            #mu {
+                display: none;
+            }
+
+
+
+            .right {
+                display: none;
+
+            }
+
+            .center {
+                width: 100%;
+                left: 0;
+
+            }
+
+            .navlist {
+                display: none;
+
+            }
+
+            /* .left{
+                display: none;
+            } */
+            .rot {
+                display: flex;
+                justify-content: center;
+                height: 60px;
+            }
+
+            #ft {
+                display: none;
+            }
+
+            .logo {
+                display: none;
+
+            }
+
+            .nav {
+                top: 64px;
+            }
+
+            .hero {
+                display: flex;
+            }
+
+            #ko {
+                display: flex;
+            }
+
+            #koo {
+                display: flex;
+            }
+
+            #ok {
+                display: none;
+            }
+
+            .text {
+                display: none;
+            }
+
+
+
+
+
+
+
+
+        }
+
+        @media screen and (min-width:750px) {
+            .up {
+                display: none;
+            }
+        }
+
+        @media screen and (min-width:764px) {
+
+            .hero {
+                display: none;
+            }
+
+
+
+
+        }
+
+        .hero {
+            width: 100%;
+            /* border: 1px solid red; */
+            height: auto;
+            /* display: flex; */
+            padding-right: 10px;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 5x;
+            border-left: 1px solid gray;
+            border-right: 1px solid gray;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.514);
+            /* background-color: #1c95e580; */
+            z-index: 4;
+            /* display: none; */
+
+        }
+
+        .dt img {
+            border: none;
+            outline: none;
+        }
+
+        #last {
+            padding-bottom: 70px;
+        }
+
+        .modu {
+            /* border: 1px solid blue; */
+            padding: 0 15px;
+            width: 100%;
+            height: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            background-color: black;
+        }
+
+        .modu .fir .a {
+            text-decoration: none;
+            color: grey;
+            /* border: 1px solid red;padding: 6px; */
+            /* padding: 8px; */
+
+        }
+
+        .modu .fir .a i {
+            font-size: 18px;
+            margin: 0 2px;
+            padding: 8px;
+            border-radius: 50%;
+
+        }
+
+        /* .modu .fir a i:hover{
+            color: rgb(0, 110, 255);
+            background-color: rgba(28, 149, 229, 0.295);
+
+        } */
+        .modu .fir i:hover {
+            color: rgb(8, 106, 235);
+            background-color: rgba(28, 149, 229, 0.295);
+
+        }
+
+        .fir .a:hover {
+            color: rgb(0, 110, 255);
+            /* background-color: rgba(28, 149, 229, 0.295); */
+            text-shadow: rgb(0, 110, 255);
+
+        }
+
+        .fir {
+            display: flex;
+            color: grey;
+            align-items: center;
+            /* border: 1px solid red; */
+
+        }
+
+
+        .modu .sec .a {
+            text-decoration: none;
+            color: grey;
+            /* border: 1px solid red;padding: 6px; */
+            /* padding: 8px; */
+
+        }
+
+        .modu .sec .a i {
+            font-size: 18px;
+            margin: 0 2px;
+            padding: 8px;
+            border-radius: 50%;
+
+        }
+
+        /* .modu .fir a i:hover{
+            color: rgb(0, 110, 255);
+            background-color: rgba(28, 149, 229, 0.295);
+
+        } */
+        .modu .sec i:hover {
+            color: rgb(14, 219, 124);
+            background-color: rgba(14, 219, 123, 0.205);
+
+        }
+
+        .sec .a:hover {
+            color: rgb(14, 219, 124);
+            /* background-color: rgba(28, 149, 229, 0.295); */
+            text-shadow: rgb(14, 219, 124);
+
+        }
+
+        .sec {
+            display: flex;
+            color: grey;
+            align-items: center;
+            /* border: 1px solid red; */
+
+        }
+
+
+
+
+        .modu .thi.a {
+            text-decoration: none;
+            color: grey;
+            /* border: 1px solid red;padding: 6px; */
+            /* padding: 8px; */
+
+        }
+
+        .a {
+            display: flex;
+            align-items: center;
+        }
+
+        .modu .thi .a i {
+            font-size: 18px;
+            margin: 0 2px;
+            padding: 8px;
+            border-radius: 50%;
+
+        }
+
+        /* .modu .fir a i:hover{
+            color: rgb(0, 110, 255);
+            background-color: rgba(28, 149, 229, 0.295);
+
+        } */
+        .modu .thi i:hover {
+            color: rgb(224, 9, 142);
+            background-color: rgba(224, 9, 141, 0.212);
+
+        }
+
+        .thi .a:hover {
+            color: rgb(224, 9, 142);
+            /* background-color: rgba(28, 149, 229, 0.295); */
+            text-shadow: rgb(224, 9, 142);
+
+        }
+
+        .thi {
+            display: flex;
+            color: grey;
+            align-items: center;
+            /* border: 1px solid red; */
+
+        }
+
+        #solid {
+            display: none;
+            color: rgb(224, 9, 142);
+        }
+
+        #solid1 {
+            display: none;
+            color: rgb(224, 9, 142);
+        }
+
+        #solid2 {
+            display: none;
+            color: rgb(224, 9, 142);
+        }
+
+        #solid3 {
+            display: none;
+            color: rgb(224, 9, 142);
+        }
+
+        #solid4 {
+            display: none;
+            color: rgb(224, 9, 142);
+        }
+
+        .lef {
+            display: flex;
+            width: 100%;
+            z-index: 10;
+            justify-content: space-around;
+        }
+
+        .rig {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .up {
+            position: fixed;
+            bottom: 20%;
+            right: 10%;
+            z-index: 8;
+
+
+
+
+
+        }
+
+        .twi {
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .noSelect:focus {
+            outline: none !important;
+        }
+
+
+        .up a {
+
+            text-decoration: none;
+            color: rgba(255, 255, 255, 0.315);
+            /* border: 2px solid red;  */
+            padding: 20px;
+            border-radius: 50%;
+            width: auto;
+            height: auto;
+            z-index: 10;
+            background-color: #1c95e52d;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+
+
+        }
+
+        .up a i {
+            font-size: 25px;
+        }
+
+
+
+        .navi {
+            display: flex;
+            width: 100%;
+            height: auto;
+            justify-content: left;
+            color: white;
+            padding: 10px;
+            position: sticky;
+            top: 0;
+            backdrop-filter: blur(10px);
+            z-index: 20;
+
+        }
+
+        .navi i {
+            font-size: 20px;
+            margin: 0 10px;
+        }
+
+        .navi h3 {
+            margin: 0 10px;
+
+        }
+
+        .ban {
+            /* border: 1px solid red; */
+            width: 100%;
+            height: auto;
+            position: relative;
+            border: none;
+            outline: none;
+            border-color: #000000;
+        }
+
+        .ban img {
+            width: 100%;
+        }
+
+        .me {
+            width: 124px;
+            position: absolute;
+            bottom: -40px;
+            left: 30px;
+            border-radius: 50%;
+            padding: 4px;
+            /* border: 1px solid red; */
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .me img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .nam {
+            width: 100%;
+            /* border: 1px solid red; */
+            height: auto;
+            color: white;
+
+            padding: 20px;
+            padding-top: 50px;
+        }
+
+        #homc {
+            display: block;
+        }
+
+        #profile {
+            display: none;
+        }
+
+        #uniback {
+            z-index: 50;
+        }
+
+        .navi i {
+            border-radius: 50%;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .navi i:hover {
+            background-color: rgba(255, 255, 255, 0.158);
+        }
+
+        .join p {
+            margin: 10px;
+            color: grey;
+        }
+
+        .whi {
+            font-size: 15px;
+            color: white;
+            margin: 0 5px;
+        }
+
+        .newtab {
+            /* border: 1px solid red; */
+            width: 100%;
+            height: auto;
+            padding: 0 10px;
+            border-bottom: 1px solid grey;
+            -webkit-tap-highlight-color: transparent;
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .tab {
+            display: flex;
+            color: grey;
+            justify-content: space-between;
+            cursor: pointer;
+
+
+        }
+
+        .tab p {
+            padding: 15px 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            padding-bottom: -10px;
+
+
+            /* text-decoration: underline;
+            text-decoration-color: #1C94E5;
+           text-decoration-thickness: 3px; */
+
+        }
+
+        @media screen and (max-width:450px) {
+            .tab p {
+                padding: 15px 3px;
+            }
+        }
+
+        .tab p:hover {
+            background-color: rgba(255, 255, 255, 0.089);
+
+        }
+
+        #post {
+            border-bottom: 4px solid #1C94E5;
+            color: white;
+        }
+
+        /* .new1 {
+            /* display: none; 
+        } */
+
+        .rep h2 {
+            color: white;
+        }
+
+        .rep {
+            display: none;
+        }
+
+        .vic img {
+            width: 100%;
+            border-radius: 30px;
+            border: 1px solid grey;
+        }
+
+        /* Chrome, Safari, and newer Opera browsers */
+        /* ::-webkit-media-controls-play-button {
+  background-color: red;
+  border-radius: 50%;
+}
+
+::-webkit-media-controls-panel {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+} */
+        .highcon {
+            /* border: 2px solid red; */
+            padding: 20px;
+            /* display: flex; */
+            justify-content: center;
+            display: none;
+            height: 80vh;
+        }
+
+        .hi {
+
+            width: 52%;
+            display: flex;
+            justify-content: left;
+            flex-direction: column;
+
+        }
+
+        .hi h2 {
+            font-weight: 900;
+            color: white;
+        }
+
+        .hi p {
+            color: grey;
+            margin: 10px 0;
+        }
+
+        .subs {
+            width: 80%;
+            /* border: 1px solid red; */
+            height: auto;
+            border-radius: 30px;
+            background-color: rgb(221, 221, 221);
+            padding: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .subs:hover {
+            background-color: rgb(194, 194, 194);
+        }
+
+        .subs h3 {
+            color: black;
+        }
+
+        .ari {
+            /* border: 2px solid red; */
+            padding: 20px;
+            /* display: flex; */
+            justify-content: center;
+            display: none;
+            height: 80vh;
+        }
+        .aria {
+            /* border: 2px solid red; */
+            padding: 20px;
+            /* display: flex; */
+            justify-content: center;
+            display: none;
+            height: 80vh;
+        }
+
+        .med {
+            /* border: 2px solid red; */
+            padding: 7px;
+            /* display: flex; */
+            flex-wrap: wrap;
+            justify-content: space-between;
+            display: none;
+            /* height: 80vh; */
+            position: relative;
+            padding-bottom: 70px;
+        }
+
+        .med img {
+            width: 30%;
+            column-gap: 10px;
+            row-gap: 10px;
+            margin: 10px 5px;
+        }
+
+        .abs {
+            /* border: 2px solid blue; */
+            width: 100%;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            z-index: 60;
+            /* display: flex; */
+            padding: 20px;
+            justify-content: center;
+            align-items: center;
+            background-color: #0000009c;
+            display: none;
+
+
+
+        }
+
+        .imc {
+            /* width: 70%; */
+            z-index: 60;
+            height: auto;
+            position: relative;
+            width: 70%;
+            justify-content: center;
+            display: flex;
+
+        }
+
+        .imc img {
+            width: 70%;
+        }
+
+        @media screen and (max-width:920px) {
+            .imc {
+                width: 100%;
+            }
+        }
+
+        .hac {
+            position: absolute;
+            top: 7px;
+            left: 0px;
+            /* border: 10px solid red; */
+        }
+
+        .hac i {
+            color: white;
+            font-size: 40px;
+            border-radius: 50%;
+            transition: all .3s;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .hac i:hover {
+            background-color: rgba(255, 255, 255, 0.144);
+        }
+        #liki{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div id="tr" class="left">
+            <div class="logo">
+                <a href="#"><img src="logo.png" alt=""></a>
+            </div>
+            <ul class="navlist">
+                <li id="home"><a href="#"><i class="fa-solid fa-house"></i>
+                        <h class="gay">Home</h>
+                    </a></li>
+                <li><a id="exp" href="#"><i class="fa-solid fa-magnifying-glass"></i>
+                        <h class="gay">Explore</h>
+                    </a></li>
+                <li><a id="not" href="#"><i class="fa-regular fa-bell"></i>
+                        <h class="gay">Notifications</h>
+                    </a></li>
+                <li><a id="mess" href="#"><i class="fa-regular fa-envelope"></i>
+                        <h class="gay">Message</h>
+                    </a></li>
+                <li><a href="#"><i class="fa-solid fa-house"></i>
+                        <h class="gay">Grok</h>
+                    </a></li>
+                <li><a href="#"><i class="fa-solid fa-clipboard-list"></i>
+                        <h class="gay">Lists</h>
+                    </a></li>
+                <li id="ch1"><a href="#"><i class="fa-regular fa-user"></i>
+                        <h class="gay">Profile</h>
+                    </a></li>
+                <li><a href="#"><i class="fa-solid fa-info"></i>
+                        <h class="gay">More</h>
+                    </a></li>
+            </ul>
+
+
+            <ul class="rot">
+                <li id="homecr"><a href="#"><i class="fa-solid fa-house"></i>
+                        <h class="gay">Home</h>
+                    </a></li>
+                <li><a id="exp" href="#"><i class="fa-solid fa-magnifying-glass"></i>
+                        <h class="gay">Explore</h>
+                    </a></li>
+                <li><a id="not" href="#"><i class="fa-regular fa-bell"></i>
+                        <h class="gay">Notifications</h>
+                    </a></li>
+                <li><a id="mess" href="#"><i class="fa-regular fa-envelope"></i>
+                        <h class="gay">Message</h>
+                    </a></li>
+                <li><a id="gro" class="re" href="#"><i class="fa-solid fa-house"></i>
+                        <h class="gay">Grok</h>
+                    </a></li>
+                <li><a id="lis" class="re" href="#"><i class="fa-solid fa-clipboard-list"></i>
+                        <h class="gay">Lists</h>
+                    </a></li>
+                <li id="cr1"><a href="#"><i class="fa-regular fa-user"></i>
+                        <h class="gay">Profile</h>
+                    </a></li>
+                <li><a id="mu" href="#"><i class="fa-solid fa-info"></i>
+                        <h class="gay">More</h>
+                    </a></li>
+            </ul>
+            <div id="ft" class="post">
+                <h4>Post</h4>
+
+            </div>
+            <div id="ft" class="post1">
+                <img src="myim.png" alt="">
+                <div class="hu">
+                    <h4>Krishna Shrivastava</h4>
+                    <p>Web Developer</p>
+                </div>
+
+
+            </div>
+
+
+        </div>
+        <div class="center">
+            <div id="homc">
+                <div class="hero">
+                    <div id="ko" class="post1">
+                        <img src="myim.png" alt="">
+
+
+                    </div>
+                    <div id="koo" class="logo">
+                        <a class="dt" href="#"><img src="logo-removebg-preview.png" alt=""></a>
+                    </div>
+                    <div class="sett">
+                        <a href="#"><i class="fa-solid fa-gear"></i></a>
+                    </div>
+
+
+                </div>
+                <div class="nav">
+
+                    <div id="fo11" class="fo1">
+                        <a href="#">
+                            <h3>For you</h3>
+                        </a>
+                    </div>
+                    <div id="fo22" class="fo2">
+                        <a href="#">
+                            <h3>Following</h3>
+                        </a>
+                    </div>
+                    <div id="ok" class="sett">
+                        <a href="#"><i class="fa-solid fa-gear"></i></a>
+                    </div>
+
+
+
+                </div>
+
+                <div class="text">
+                    <div class="ph">
+                        <div class="phot">
+                            <a href="#"><img src="myim.png" alt=""></a>
+
+                        </div>
+                        <!-- <input type="text-area" placeholder="What is happening?!" > -->
+                        <textarea placeholder="What is happening?!" class="input" id="" cols="100%"
+                            rows="auto"></textarea>
+                    </div>
+                    <div class="dab">
+                        <div class="ever">
+                            <a href="#"><i class="fa-solid fa-earth-americas"></i>
+                                <p>Everyone can reply</p>
+                            </a>
+
+                        </div>
+                        <div id="po" class="post">
+                            <h4>Post</h4>
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="twi">
+                    <!-- <div class="user">
+                    <a href="#"><img src="myim (1).png" alt="">
+                        <h4>Krishna Shrivastava</h4>
+                        <div class="blu"> <img id="blue" src="bluetick.png" alt=""></div>
+                       
+                    </a> <div class="wri">
+                            <p>Here is my Netflix Clone Project</p>
+                        </div>
+
+                </div> -->
+
+                    <div id="wt" class="post1">
+                        <a href="#"><img src="myim.png" alt="">
+                            <div class="hu">
+                                <h4>Krishna Shrivastava <img id="blue" src="bluetick.png" alt=""> </h4>
+
+                            </div>
+                        </a>
+                        <p>Here is my Netflix Clone Project</p>
+
+
+
+                    </div>
+                    <div class="cont">
+                        <div class="up">
+                            <a href="#"><i class="fa-solid fa-feather"></i></a>
+
+                        </div>
+                        <div class="vic">
+                            <video controls preload="auto" autoplay controlsList='nodownload' loop muted
+                                src="twi1.mp4"></video>
+                        </div>
+                        <div class="modu">
+                            <div class="lef">
+                                <div class="fir">
+                                    <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                </div>
+                                <div class="sec">
+                                    <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                </div>
+                                <div id="love" class="thi">
+                                    <div class="a">
+
+                                        <i id="hollow" class="fa-regular fa-heart"></i>
+
+
+                                        <i id="solid" class="fa-solid fa-heart"></i>
+
+
+
+
+                                        <span id="nuw">9.9M</span>
+
+
+                                    </div>
+
+
+
+                                </div>
+                                <div class="fir">
+                                    <div class="a"><i class="fa-solid fa-chart-simple"></i>10M</div>
+
+                                </div>
+                            </div>
+                            <div class="rig">
+                                <div class="fir">
+                                    <div class="a"><i class="fa-regular fa-bookmark"></i></div>
+
+                                </div>
+                                <div class="fir">
+                                    <div class="a"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+                </div>
+                <div class="twi">
+                    <!-- <div class="user">
+                    <a href="#"><img src="myim (1).png" alt="">
+                        <h4>Krishna Shrivastava</h4>
+                        <div class="blu"> <img id="blue" src="bluetick.png" alt=""></div>
+                       
+                    </a> <div class="wri">
+                            <p>Here is my Netflix Clone Project</p>
+                        </div>
+
+                </div> -->
+
+                    <div id="wt" class="post1">
+                        <a href="#"><img src="myim.png" alt="">
+                            <div class="hu">
+                                <h4>Krishna Shrivastava <img id="blue" src="bluetick.png" alt=""> </h4>
+
+                            </div>
+                        </a>
+                        <p>Here is my Netflix Clone Project</p>
+
+
+
+                    </div>
+                    <div class="cont">
+                        <div class="vic">
+                            <video controls preload="auto" autoplay controlsList='nodownload' loop muted
+                                src="twi1.mp4"></video>
+                        </div>
+                        <div class="modu">
+                            <div class="lef">
+                                <div class="fir">
+                                    <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                </div>
+                                <div class="sec">
+                                    <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                </div>
+                                <div id="love1" class="thi">
+                                    <div class="a">
+
+                                        <i id="hollow1" class="fa-regular fa-heart"></i>
+
+
+                                        <i id="solid1" class="fa-solid fa-heart"></i>
+
+
+
+
+                                        <span id="nuw1">9.9M</span>
+
+
+                                    </div>
+
+
+
+                                </div>
+                                <div class="fir">
+                                    <div class="a"><i class="fa-solid fa-chart-simple"></i>10M</div>
+
+                                </div>
+                            </div>
+                            <div class="rig">
+                                <div class="fir">
+                                    <div class="a"><i class="fa-regular fa-bookmark"></i></div>
+
+                                </div>
+                                <div class="fir">
+                                    <div class="a"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="twi">
+                    <!-- <div class="user">
+                    <a href="#"><img src="myim (1).png" alt="">
+                        <h4>Krishna Shrivastava</h4>
+                        <div class="blu"> <img id="blue" src="bluetick.png" alt=""></div>
+                       
+                    </a> <div class="wri">
+                            <p>Here is my Netflix Clone Project</p>
+                        </div>
+
+                </div> -->
+
+                    <div id="wt" class="post1">
+                        <a href="#"><img src="myim.png" alt="">
+                            <div class="hu">
+                                <h4>Krishna Shrivastava <img id="blue" src="bluetick.png" alt=""> </h4>
+
+                            </div>
+                        </a>
+                        <p>Here is my Netflix Clone Project</p>
+
+
+
+                    </div>
+                    <div class="cont">
+                        <div class="vic">
+                            <video controls preload="auto" autoplay loop controlsList='nodownload' muted
+                                src="twi1.mp4"></video>
+                        </div>
+
+
+                        <div class="modu">
+                            <div class="lef">
+                                <div class="fir">
+                                    <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                </div>
+                                <div class="sec">
+                                    <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                </div>
+                                <div id="love2" class="thi">
+                                    <div class="a">
+
+                                        <i id="hollow2" class="fa-regular fa-heart"></i>
+
+
+                                        <i id="solid2" class="fa-solid fa-heart"></i>
+
+
+
+
+                                        <span id="nuw2">9.9M</span>
+
+
+                                    </div>
+
+
+
+                                </div>
+                                <div class="fir">
+                                    <div class="a"><i class="fa-solid fa-chart-simple"></i>10M</div>
+
+                                </div>
+                            </div>
+                            <div class="rig">
+                                <div class="fir">
+                                    <div class="a"><i class="fa-regular fa-bookmark"></i></div>
+
+                                </div>
+                                <div class="fir">
+                                    <div class="a"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="twi">
+                    <!-- <div class="user">
+                    <a href="#"><img src="myim (1).png" alt="">
+                        <h4>Krishna Shrivastava</h4>
+                        <div class="blu"> <img id="blue" src="bluetick.png" alt=""></div>
+                       
+                    </a> <div class="wri">
+                            <p>Here is my Netflix Clone Project</p>
+                        </div>
+
+                </div> -->
+
+                    <div id="wt" class="post1">
+                        <a href="#"><img src="myim.png" alt="">
+                            <div class="hu">
+                                <h4>Krishna Shrivastava <img id="blue" src="bluetick.png" alt=""> </h4>
+
+                            </div>
+                        </a>
+                        <p>Here is my Netflix Clone Project</p>
+
+
+
+                    </div>
+                    <div class="cont">
+                        <div class="vic">
+                            <video controls preload="auto" autoplay controlsList='nodownload' loop muted
+                                src="twi1.mp4"></video>
+                        </div>
+                        <div class="modu">
+                            <div class="lef">
+                                <div class="fir">
+                                    <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                </div>
+                                <div class="sec">
+                                    <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                </div>
+                                <div id="love3" class="thi">
+                                    <div class="a">
+
+                                        <i id="hollow3" class="fa-regular fa-heart"></i>
+
+
+                                        <i id="solid3" class="fa-solid fa-heart"></i>
+
+
+
+
+                                        <span id="nuw3">9.9M</span>
+
+
+                                    </div>
+
+
+
+                                </div>
+                                <div class="fir">
+                                    <div class="a"><i class="fa-solid fa-chart-simple"></i>10M</div>
+
+                                </div>
+                            </div>
+                            <div class="rig">
+                                <div class="fir">
+                                    <div class="a"><i class="fa-regular fa-bookmark"></i></div>
+
+                                </div>
+                                <div class="fir">
+                                    <div class="a"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+                <div class="twi" id="last">
+                    <!-- <div class="user">
+                    <a href="#"><img src="myim (1).png" alt="">
+                        <h4>Krishna Shrivastava</h4>
+                        <div class="blu"> <img id="blue" src="bluetick.png" alt=""></div>
+                       
+                    </a> <div class="wri">
+                            <p>Here is my Netflix Clone Project</p>
+                        </div>
+
+                </div> -->
+
+                    <div id="wt" class="post1">
+                        <a href="#"><img src="myim.png" alt="">
+                            <div class="hu">
+                                <h4>Krishna Shrivastava <img id="blue" src="bluetick.png" alt=""> </h4>
+
+                            </div>
+                        </a>
+                        <p>Here is my Netflix Clone Project</p>
+
+
+
+                    </div>
+                    <div class="cont">
+                        <div class="vic">
+                            <video controls preload="auto" autoplay loop controlsList='nodownload' muted
+                                src="twi1.mp4"></video>
+                        </div>
+                        <div class="modu">
+                            <div class="lef">
+                                <div class="fir">
+                                    <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                </div>
+                                <div class="sec">
+                                    <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                </div>
+                                <div id="love4" class="thi">
+                                    <div class="a">
+
+                                        <i id="hollow4" class="fa-regular fa-heart"></i>
+
+
+                                        <i id="solid4" class="fa-solid fa-heart"></i>
+
+
+
+
+                                        <span id="nuw4">9.9M</span>
+
+
+                                    </div>
+
+
+
+                                </div>
+                                <div class="fir">
+                                    <div class="a"><i class="fa-solid fa-chart-simple"></i>10M</div>
+
+                                </div>
+                            </div>
+                            <div class="rig">
+                                <div class="fir">
+                                    <div class="a"><i class="fa-regular fa-bookmark"></i></div>
+
+                                </div>
+                                <div class="fir">
+                                    <div class="a"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+
+                                </div>
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+                </div>
+            </div>
+            <div id="profile">
+                <div class="navi">
+                    <i id="uniback" class="fa-solid fa-arrow-left"></i>
+                    <h3>Krishna Shrivastava</h3>
+                </div>
+                <div class="ban">
+                    <div class="me">
+                        <img src="myim.png" alt="">
+                    </div>
+                    <img src="ban.jpeg" alt="">
+
+                </div>
+                <div class="nam">
+                    <h2>Krishna Shrivastava</h2>
+                    <p>Web Developer</p>
+                    <div class="join">
+                        <p><i class="fa-solid fa-calendar-days"></i> Joined December 2023</p>
+                        <p><span class="whi">0</span> Following <span class="whi">10M</span>Followers</p>
+                    </div>
+
+                </div>
+                <div class="newtab">
+                    <div class="tab">
+                        <p id="post">Posts</p>
+                        <p id="replies">Replies</p>
+                        <p id="high">Highlights</p>
+                        <p id="art">Articles</p>
+                        <p id="media">Media</p>
+                        <p id="likes">Likes</p>
+
+                    </div>
+                </div>
+                <div id="pose" class="new1">
+                    <div class="twi">
+                        <!-- <div class="user">
+                        <a href="#"><img src="myim (1).png" alt="">
+                            <h4>Krishna Shrivastava</h4>
+                            <div class="blu"> <img id="blue" src="bluetick.png" alt=""></div>
+                           
+                        </a> <div class="wri">
+                                <p>Here is my Netflix Clone Project</p>
+                            </div>
+    
+                    </div> -->
+
+                        <div id="wt" class="post1">
+                            <a href="#"><img src="myim.png" alt="">
+                                <div class="hu">
+                                    <h4>Krishna Shrivastava <img id="blue" src="bluetick.png" alt=""> </h4>
+
+                                </div>
+                            </a>
+                            <p>Here is my Netflix Clone Project</p>
+
+
+
+                        </div>
+                        <div class="cont">
+                            <div class="vic">
+                                <video controls preload="auto" autoplay loop controlsList='nodownload' muted
+                                    src="twi1.mp4"></video>
+                            </div>
+                            <div class="modu">
+                                <div class="lef">
+                                    <div class="fir">
+                                        <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                    </div>
+                                    <div class="sec">
+                                        <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                    </div>
+                                    <div id="love3" class="thi">
+                                        <div class="a">
+
+                                            <i id="hollow3" class="fa-regular fa-heart"></i>
+
+
+                                            <i id="solid3" class="fa-solid fa-heart"></i>
+
+
+
+
+                                            <span id="nuw3">9.9M</span>
+
+
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="fir">
+                                        <div class="a"><i class="fa-solid fa-chart-simple"></i>10M</div>
+
+                                    </div>
+                                </div>
+                                <div class="rig">
+                                    <div class="fir">
+                                        <div class="a"><i class="fa-regular fa-bookmark"></i></div>
+
+                                    </div>
+                                    <div class="fir">
+                                        <div class="a"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+
+                                    </div>
+
+                                </div>
+
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="repli" class="rep">
+                    <div class="twi">
+                        <!-- <div class="user">
+                        <a href="#"><img src="myim (1).png" alt="">
+                            <h4>Krishna Shrivastava</h4>
+                            <div class="blu"> <img id="blue" src="bluetick.png" alt=""></div>
+                           
+                        </a> <div class="wri">
+                                <p>Here is my Netflix Clone Project</p>
+                            </div>
+    
+                    </div> -->
+
+                        <div id="wt" class="post1">
+                            <a href="#"><img src="myim.png" alt="">
+                                <div class="hu">
+                                    <h4>Krishna Shrivastava <img id="blue" src="bluetick.png" alt=""> </h4>
+
+                                </div>
+                            </a>
+                            <p>Here is my Netflix Clone Project</p>
+
+
+
+                        </div>
+                        <div class="cont">
+                            <div class="vic">
+                                <!-- <video controls preload="auto" autoplay loop muted src="twi1.mp4"></video> -->
+                                <img src="repli1.png" alt="">
+                            </div>
+                            <div class="modu">
+                                <div class="lef">
+                                    <div class="fir">
+                                        <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                    </div>
+                                    <div class="sec">
+                                        <div class="a"><i class="fa-regular fa-comment"></i>0</div>
+
+                                    </div>
+                                    <div id="love3" class="thi">
+                                        <div class="a">
+
+                                            <i id="hollow3" class="fa-regular fa-heart"></i>
+
+
+                                            <i id="solid3" class="fa-solid fa-heart"></i>
+
+
+
+
+                                            <span id="nuw3">9.9M</span>
+
+
+                                        </div>
+
+
+
+                                    </div>
+                                    <div class="fir">
+                                        <div class="a"><i class="fa-solid fa-chart-simple"></i>10M</div>
+
+                                    </div>
+                                </div>
+                                <div class="rig">
+                                    <div class="fir">
+                                        <div class="a"><i class="fa-regular fa-bookmark"></i></div>
+
+                                    </div>
+                                    <div class="fir">
+                                        <div class="a"><i class="fa-solid fa-arrow-up-from-bracket"></i></div>
+
+                                    </div>
+
+                                </div>
+
+
+
+
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="highcont" class="highcon">
+                    <div class="hi">
+                        <h2>Highlight on your profile</h2>
+                        <p>You must be subscribed to Premium to highlight posts on your profile.</p>
+                        <div class="subs">
+                            <h3>Subscribe to Premium</h3>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="arti" class="ari">
+                    <div class="hi">
+                        <h2>Write Articles on X</h2>
+                        <p>You must be subscribed to Premium+ to write Articles on X</p>
+                        <div class="subs">
+                            <h3>Upgrade to Premium+</h3>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div id="liki" class="aria">
+                    <div class="hi">
+                        <h2>You Have Already Liked Me 😃 </h2>
+                        <!-- <p>You must be subscribed to Premium+ to write Articles on X</p>
+                        <div class="subs">
+                            <h3>Upgrade to Premium+</h3>
+
+                        </div> -->
+                    </div>
+
+                </div>
+                <div id="medi" class="med">
+                    <!-- <div class="hi">
+                        <h2>Write Articles on X</h2>
+                        <p>You must be subscribed to Premium+ to write Articles on X</p>
+                        <div class="subs">
+                            <h3>Upgrade to Premium+</h3>
+
+                        </div>
+                    </div> -->
+                    <img id="im1" src="myim.png" alt="">
+                    <img id="im2" src="myim.png" alt="">
+                    <img id="im3" src="myim.png" alt="">
+                    <img id="im4" src="myim.png" alt="">
+                    <img id="im5" src="myim.png" alt="">
+                    <img id="im6" src="myim.png" alt="">
+                    <img id="im7" src="myim.png" alt="">
+                    <img id="im8" src="myim.png" alt="">
+                    <img id="im9" src="myim.png" alt="">
+                    <img id="im10" src="myim.png" alt="">
+                    <img id="im11" src="myim.png" alt="">
+                    <img id="im12" src="myim.png" alt="">
+                    <img id="im13" src="myim.png" alt="">
+                    <img id="im14" src="myim.png" alt="">
+
+                    <img id="im15" src="myim.png" alt="">
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+        </div>
+        <div class="right">
+            <div class="navse">
+                <div id="natu" class="nat">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+        <div id="abs1" class="abs">
+
+            <div class="imc">
+                <img id="im1" src="myim.png" alt="">
+                <div id="jac" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs2" class="abs">
+
+            <div class="imc">
+                <img id="im2" src="myim.png" alt="">
+                <div id="jac2" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs3" class="abs">
+
+            <div class="imc">
+                <img id="im3" src="myim.png" alt="">
+                <div id="jac3" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs4" class="abs">
+
+            <div class="imc">
+                <img id="im4" src="myim.png" alt="">
+                <div id="jac4" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs5" class="abs">
+
+            <div class="imc">
+                <img id="im5" src="myim.png" alt="">
+                <div id="jac5" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs6" class="abs">
+
+            <div class="imc">
+                <img id="im6" src="myim.png" alt="">
+                <div id="jac6" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs7" class="abs">
+
+            <div class="imc">
+                <img id="im7" src="myim.png" alt="">
+                <div id="jac7" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs8" class="abs">
+
+            <div class="imc">
+                <img id="im8" src="myim.png" alt="">
+                <div id="jac8" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs9" class="abs">
+
+            <div class="imc">
+                <img id="im9" src="myim.png" alt="">
+                <div id="jac9" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs10" class="abs">
+
+            <div class="imc">
+                <img id="im10" src="myim.png" alt="">
+                <div id="jac10" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs11" class="abs">
+
+            <div class="imc">
+                <img id="im11" src="myim.png" alt="">
+                <div id="jac11" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs12" class="abs">
+
+            <div class="imc">
+                <img id="im12" src="myim.png" alt="">
+                <div id="jac12" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs13" class="abs">
+
+            <div class="imc">
+                <img id="im13" src="myim.png" alt="">
+                <div id="jac13" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs14" class="abs">
+
+            <div class="imc">
+                <img id="im14" src="myim.png" alt="">
+                <div id="jac14" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+        <div id="abs15" class="abs">
+
+            <div class="imc">
+                <img id="im15" src="myim.png" alt="">
+                <div id="jac15" class="hac">
+                    <i class="fa-solid fa-xmark"></i>
+
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <script>
+        const fo11 = document.getElementById('fo11')
+        const fo22 = document.getElementById('fo22')
+        f = 0
+        fo22.addEventListener("click", function () {
+            fo11.querySelector('a h3').style.borderBottom = "none";
+            fo22.querySelector('a h3').style.borderBottom = "thick solid #02A2E0";
+        })
+        fo11.addEventListener("click", function () {
+            fo22.querySelector('a h3').style.borderBottom = "none";
+            fo11.querySelector('a h3').style.borderBottom = "thick solid #02A2E0";
+        })
+
+        const natu = document.getElementById('natu')
+
+        natu.addEventListener("click", function (evt) {
+            evt.stopPropagation()
+            natu.style.borderColor = "#1C94E5"
+            natu.querySelector('i').style.color = "#1C94E5"
+
+
+        })
+        window.addEventListener("click", function () {
+            natu.style.borderColor = "transparent"
+            natu.querySelector('i').style.color = "#ADADAD"
+        })
+
+        // const love = document.getElementById("love")
+        // const hesolid = document.getElementById("hesolid")
+        // love.addEventListener('click', function (event) {
+        //     event.stopPropagation()
+        //     love.querySelector('a').style.display = "none"
+        //     hesolid.style.display = "block"
+
+        // })
+
+
+        const hollow = document.getElementById('hollow')
+        const love = document.getElementById('love')
+        const solid = document.getElementById('solid')
+        const nuw = document.getElementById('nuw')
+        p = 0
+        let counter = 9
+        love.addEventListener('click', function () {
+            if (p === 0) {
+                hollow.replaceWith(solid)
+                solid.style.display = 'block'
+                hollow.style.display = 'none'
+                counter++
+                nuw.textContent = counter + ('M')
+                p = 1
+            } else {
+                solid.replaceWith(hollow)
+                solid.style.display = 'none'
+                hollow.style.display = 'block'
+                counter--
+                nuw.textContent = counter + (.9) + ('M')
+                p = 0
+            }
+
+        })
+
+        const hollow1 = document.getElementById('hollow1')
+        const love1 = document.getElementById('love1')
+        const solid1 = document.getElementById('solid1')
+        const nuw1 = document.getElementById('nuw1')
+        o = 0
+        let counter1 = 9
+        love1.addEventListener('click', function () {
+            if (o === 0) {
+                hollow1.replaceWith(solid1)
+                solid1.style.display = 'block'
+                hollow1.style.display = 'none'
+                counter1++
+                nuw1.textContent = counter1 + ('M')
+                o = 1
+            } else {
+                solid1.replaceWith(hollow1)
+                solid1.style.display = 'none'
+                hollow1.style.display = 'block'
+                counter1--
+                nuw1.textContent = counter1 + (.9) + ('M')
+                o = 0
+            }
+
+        })
+
+        const hollow2 = document.getElementById('hollow2')
+        const love2 = document.getElementById('love2')
+        const solid2 = document.getElementById('solid2')
+        const nuw2 = document.getElementById('nuw2')
+        u = 0
+        let counter2 = 9
+        love2.addEventListener('click', function () {
+            if (u === 0) {
+                hollow2.replaceWith(solid2)
+                solid2.style.display = 'block'
+                hollow2.style.display = 'none'
+                counter2++
+                nuw2.textContent = counter2 + ('M')
+                u = 1
+            } else {
+                solid2.replaceWith(hollow2)
+                solid2.style.display = 'none'
+                hollow2.style.display = 'block'
+                counter2--
+                nuw2.textContent = counter2 + (.9) + ('M')
+                u = 0
+            }
+
+        })
+
+
+        const hollow3 = document.getElementById('hollow3')
+        const love3 = document.getElementById('love3')
+        const solid3 = document.getElementById('solid3')
+        const nuw3 = document.getElementById('nuw3')
+        y = 0
+        let counter3 = 9
+        love3.addEventListener('click', function () {
+            if (y === 0) {
+                hollow3.replaceWith(solid3)
+                solid3.style.display = 'block'
+                hollow3.style.display = 'none'
+                counter3++
+                nuw3.textContent = counter3 + ('M')
+                y = 1
+            } else {
+                solid3.replaceWith(hollow3)
+                solid3.style.display = 'none'
+                hollow3.style.display = 'block'
+                counter3--
+                nuw3.textContent = counter3 + (.9) + ('M')
+                y = 0
+            }
+
+        })
+
+
+        const hollow4 = document.getElementById('hollow4')
+        const love4 = document.getElementById('love4')
+        const solid4 = document.getElementById('solid4')
+        const nuw4 = document.getElementById('nuw4')
+        t = 0
+        let counter4 = 9
+        love4.addEventListener('click', function () {
+            if (t === 0) {
+                hollow4.replaceWith(solid4)
+                solid4.style.display = 'block'
+                hollow4.style.display = 'none'
+                counter4++
+                nuw4.textContent = counter4 + ('M')
+                t = 1
+            } else {
+                solid4.replaceWith(hollow4)
+                solid4.style.display = 'none'
+                hollow4.style.display = 'block'
+                counter4--
+                nuw4.textContent = counter4 + (.9) + ('M')
+                t = 0
+            }
+
+        })
+
+
+        const homc = document.getElementById('homc')
+        const home = document.getElementById('home')
+        const profile = document.getElementById('profile')
+        const ch1 = document.getElementById('ch1')
+        const cr1 = document.getElementById('cr1')
+        const homecr = document.getElementById('homecr')
+        const uniback = document.getElementById('uniback')
+
+        ch1.addEventListener('click', function () {
+            homc.style.display = "none"
+            profile.style.display = "block"
+
+        })
+        home.addEventListener('click', function () {
+            homc.style.display = "block"
+            profile.style.display = "none"
+
+        })
+
+        cr1.addEventListener('click', function () {
+            homc.style.display = "none"
+            profile.style.display = "block"
+
+        })
+        homecr.addEventListener('click', function () {
+            homc.style.display = "block"
+            profile.style.display = "none"
+
+        })
+
+        // Its a uniiversal Back button Important
+
+        uniback.addEventListener('click', function () {
+            homc.style.display = "block"
+            profile.style.display = "none"
+        })
+
+
+
+
+        const post = document.getElementById('post')
+        const art = document.getElementById('art')
+        const high = document.getElementById('high')
+        const likes = document.getElementById('likes')
+        const replies = document.getElementById('replies')
+        const media = document.getElementById('media')
+        const repli = document.getElementById('repli')
+        const new1 = document.getElementById('pose')
+        const highcon = document.getElementById('highcont')
+        const arti = document.getElementById('arti')
+        const medi = document.getElementById('medi')
+        const liki = document.getElementById('liki')
+
+        art.addEventListener('click', function () {
+            post.style.borderBottom = "none"
+
+
+            high.style.borderBottom = "none"
+            likes.style.borderBottom = "none"
+            replies.style.borderBottom = "none"
+            media.style.borderBottom = "none"
+            art.style.borderBottom = 'thick solid #1C94E5'
+            art.style.color = 'white'
+            media.style.color = 'grey'
+            high.style.color = 'grey'
+            likes.style.color = 'grey'
+            replies.style.color = 'grey'
+            post.style.color = 'grey'
+            highcon.style.display = "none"
+            arti.style.display = "flex"
+            medi.style.display = "none"
+            new1.style.display = "none"
+            repli.style.display = "none"
+            liki.style.display = "none"
+        })
+        media.addEventListener('click', function () {
+            post.style.borderBottom = "none"
+
+            media.style.color = 'white'
+            high.style.color = 'grey'
+            likes.style.color = 'grey'
+            replies.style.color = 'grey'
+            post.style.color = 'grey'
+            art.style.color = 'grey'
+
+
+            high.style.borderBottom = "none"
+            likes.style.borderBottom = "none"
+            replies.style.borderBottom = "none"
+            art.style.borderBottom = "none"
+            media.style.borderBottom = 'thick solid #1C94E5'
+            highcon.style.display = "none"
+            arti.style.display = "none"
+            medi.style.display = "flex"
+            new1.style.display = "none"
+            repli.style.display = "none"
+            liki.style.display = "none"
+
+        })
+        high.addEventListener('click', function () {
+            post.style.borderBottom = "none"
+
+            high.style.color = 'white'
+            likes.style.color = 'grey'
+            replies.style.color = 'grey'
+            post.style.color = 'grey'
+            art.style.color = 'grey'
+            media.style.color = 'grey'
+
+
+            media.style.borderBottom = "none"
+            likes.style.borderBottom = "none"
+            replies.style.borderBottom = "none"
+            art.style.borderBottom = "none"
+            high.style.borderBottom = 'thick solid #1C94E5'
+            highcon.style.display = "flex"
+            new1.style.display = "none"
+            repli.style.display = "none"
+            arti.style.display = "none"
+            medi.style.display = "none"
+            liki.style.display = "none"
+
+        })
+        likes.addEventListener('click', function () {
+            post.style.borderBottom = "none"
+
+            likes.style.color = 'white'
+            replies.style.color = 'grey'
+            post.style.color = 'grey'
+            art.style.color = 'grey'
+            media.style.color = 'grey'
+            high.style.color = 'grey'
+
+
+            media.style.borderBottom = "none"
+            high.style.borderBottom = "none"
+            replies.style.borderBottom = "none"
+            art.style.borderBottom = "none"
+            likes.style.borderBottom = 'thick solid #1C94E5'
+            highcon.style.display = "none"
+            arti.style.display = "none"
+            medi.style.display = "none"
+            new1.style.display = "none"
+            repli.style.display = "none"
+            liki.style.display = "flex"
+        })
+        replies.addEventListener('click', function () {
+            post.style.borderBottom = "none"
+            repli.style.display = "block"
+            new1.style.display = "none"
+
+            replies.style.color = 'white'
+            post.style.color = 'grey'
+            art.style.color = 'grey'
+            media.style.color = 'grey'
+            high.style.color = 'grey'
+            likes.style.color = 'grey'
+
+            likes.style.borderBottom = "none"
+            media.style.borderBottom = "none"
+            high.style.borderBottom = "none"
+            replies.style.borderBottom = "none"
+            art.style.borderBottom = "none"
+            replies.style.borderBottom = 'thick solid #1C94E5'
+            highcon.style.display = "none"
+            arti.style.display = "none"
+            medi.style.display = "none"
+            liki.style.display = "none"
+        })
+        post.addEventListener('click', function () {
+            repli.style.display = "none"
+            new1.style.display = "block"
+
+            post.style.color = 'white'
+            art.style.color = 'grey'
+            media.style.color = 'grey'
+            high.style.color = 'grey'
+            likes.style.color = 'grey'
+            replies.style.color = 'grey'
+
+
+
+            likes.style.borderBottom = "none"
+            media.style.borderBottom = "none"
+            high.style.borderBottom = "none"
+            replies.style.borderBottom = "none"
+            art.style.borderBottom = "none"
+            post.style.borderBottom = 'thick solid #1C94E5'
+            highcon.style.display = "none"
+            arti.style.display = "none"
+            medi.style.display = "none"
+            liki.style.display = "none"
+        })
+
+
+
+        const im1 = document.getElementById("im1")
+        const abs1 = document.getElementById("abs1")
+        var bodyElement = document.body;
+        const jac = document.getElementById('jac')
+        ab1 = 0
+        im1.addEventListener("click", function () {
+            if (ab1 === 0) {
+                abs1.style.display = "flex"
+                ab1 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs1.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab1 = 0
+                })
+
+            }
+
+        })
+        jac.addEventListener("click", function () {
+            abs1.style.display = "none"
+            ab1 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+
+        const im2 = document.getElementById("im2")
+        const abs2 = document.getElementById("abs2")
+        var bodyElement = document.body;
+        const jac2 = document.getElementById('jac2')
+        ab2 = 0
+        im2.addEventListener("click", function () {
+            if (ab2 === 0) {
+                abs2.style.display = "flex"
+                ab2 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs2.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab2 = 0
+                })
+
+            }
+
+        })
+        jac2.addEventListener("click", function () {
+            abs2.style.display = "none"
+            ab2 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+
+
+        const im3 = document.getElementById("im3")
+        const abs3 = document.getElementById("abs3")
+        var bodyElement = document.body;
+        const jac3 = document.getElementById('jac3')
+        ab3 = 0
+        im3.addEventListener("click", function () {
+            if (ab3 === 0) {
+                abs3.style.display = "flex"
+                ab3 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs3.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab3 = 0
+                })
+
+            }
+
+        })
+        jac3.addEventListener("click", function () {
+            abs3.style.display = "none"
+            ab3 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+
+        const im4 = document.getElementById("im4")
+        const abs4 = document.getElementById("abs4")
+        var bodyElement = document.body;
+        const jac4 = document.getElementById('jac4')
+        ab4 = 0
+        im4.addEventListener("click", function () {
+            if (ab4 === 0) {
+                abs4.style.display = "flex"
+                ab4 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs4.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab4 = 0
+                })
+
+            }
+
+        })
+        jac4.addEventListener("click", function () {
+            abs4.style.display = "none"
+            ab4 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+
+        const im5 = document.getElementById("im5")
+        const abs5 = document.getElementById("abs5")
+        var bodyElement = document.body;
+        const jac5 = document.getElementById('jac5')
+        ab5 = 0
+        im5.addEventListener("click", function () {
+            if (ab5 === 0) {
+                abs5.style.display = "flex"
+                ab5 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs5.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab5 = 0
+                })
+
+            }
+
+        })
+        jac5.addEventListener("click", function () {
+            abs5.style.display = "none"
+            ab5 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+        const im6 = document.getElementById("im6")
+        const abs6 = document.getElementById("abs6")
+        var bodyElement = document.body;
+        const jac6 = document.getElementById('jac6')
+        ab6 = 0
+        im6.addEventListener("click", function () {
+            if (ab6 === 0) {
+                abs6.style.display = "flex"
+                ab6 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs6.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab6 = 0
+                })
+
+            }
+
+        })
+        jac6.addEventListener("click", function () {
+            abs6.style.display = "none"
+            ab6 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+        const im7 = document.getElementById("im7")
+        const abs7 = document.getElementById("abs7")
+        var bodyElement = document.body;
+        const jac7 = document.getElementById('jac7')
+        ab7 = 0
+        im7.addEventListener("click", function () {
+            if (ab7 === 0) {
+                abs7.style.display = "flex"
+                ab7 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs7.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab7 = 0
+                })
+
+            }
+
+        })
+        jac7.addEventListener("click", function () {
+            abs7.style.display = "none"
+            ab7 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+
+        const im8 = document.getElementById("im8")
+        const abs8 = document.getElementById("abs8")
+        var bodyElement = document.body;
+        const jac8 = document.getElementById('jac8')
+        ab8 = 0
+        im8.addEventListener("click", function () {
+            if (ab8 === 0) {
+                abs8.style.display = "flex"
+                ab8 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs8.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab8 = 0
+                })
+
+            }
+
+        })
+        jac8.addEventListener("click", function () {
+            abs8.style.display = "none"
+            ab8 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+        const im9 = document.getElementById("im9")
+        const abs9 = document.getElementById("abs9")
+        var bodyElement = document.body;
+        const jac9 = document.getElementById('jac9')
+        ab9 = 0
+        im9.addEventListener("click", function () {
+            if (ab9 === 0) {
+                abs9.style.display = "flex"
+                ab9 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs9.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab9 = 0
+                })
+
+            }
+
+        })
+        jac9.addEventListener("click", function () {
+            abs9.style.display = "none"
+            ab9 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+        const im10 = document.getElementById("im10")
+        const abs10 = document.getElementById("abs10")
+        var bodyElement = document.body;
+        const jac10 = document.getElementById('jac10')
+        ab10 = 0
+        im10.addEventListener("click", function () {
+            if (ab10 === 0) {
+                abs10.style.display = "flex"
+                ab10 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs10.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab10 = 0
+                })
+
+            }
+
+        })
+        jac10.addEventListener("click", function () {
+            abs10.style.display = "none"
+            ab10 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+        const im11 = document.getElementById("im11")
+        const abs11 = document.getElementById("abs11")
+        var bodyElement = document.body;
+        const jac11 = document.getElementById('jac11')
+        ab11 = 0
+        im11.addEventListener("click", function () {
+            if (ab11 === 0) {
+                abs11.style.display = "flex"
+                ab11 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs11.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab11 = 0
+                })
+
+            }
+
+        })
+        jac11.addEventListener("click", function () {
+            abs11.style.display = "none"
+            ab11 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+        const im12 = document.getElementById("im12")
+        const abs12 = document.getElementById("abs12")
+        var bodyElement = document.body;
+        const jac12 = document.getElementById('jac12')
+        ab12 = 0
+        im12.addEventListener("click", function () {
+            if (ab12 === 0) {
+                abs12.style.display = "flex"
+                ab12 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs12.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab12 = 0
+                })
+
+            }
+
+        })
+        jac12.addEventListener("click", function () {
+            abs12.style.display = "none"
+            ab12 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+        const im13 = document.getElementById("im13")
+        const abs13 = document.getElementById("abs13")
+        var bodyElement = document.body;
+        const jac13 = document.getElementById('jac13')
+        ab13 = 0
+        im13.addEventListener("click", function () {
+            if (ab13 === 0) {
+                abs13.style.display = "flex"
+                ab13 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs13.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab13 = 0
+                })
+
+            }
+
+        })
+        jac13.addEventListener("click", function () {
+            abs13.style.display = "none"
+            ab13 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+        const im14 = document.getElementById("im14")
+        const abs14 = document.getElementById("abs14")
+        var bodyElement = document.body;
+        const jac14 = document.getElementById('jac14')
+        ab14 = 0
+        im14.addEventListener("click", function () {
+            if (ab14 === 0) {
+                abs14.style.display = "flex"
+                ab14 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs14.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab14 = 0
+                })
+
+            }
+
+        })
+        jac14.addEventListener("click", function () {
+            abs14.style.display = "none"
+            ab14 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+        const im15 = document.getElementById("im15")
+        const abs15 = document.getElementById("abs15")
+        var bodyElement = document.body;
+        const jac15 = document.getElementById('jac15')
+        ab15 = 0
+        im15.addEventListener("click", function () {
+            if (ab15 === 0) {
+                abs5.style.display = "flex"
+                ab15 = 1
+                bodyElement.style.overflowY = "hidden"
+            }
+            else {
+                window.addEventListener("click", function () {
+
+                    abs15.style.display = "none"
+                    bodyElement.style.overflowY = "scroll"
+
+
+                    ab15 = 0
+                })
+
+            }
+
+        })
+        jac15.addEventListener("click", function () {
+            abs15.style.display = "none"
+            ab15 = 0
+            document.body.style.overflow = "scroll";
+            document.body.style.overflowX = "hidden";
+        })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
